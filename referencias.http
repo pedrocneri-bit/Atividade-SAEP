@@ -1,0 +1,67 @@
+### Variável Global
+@baseUrl = http://localhost:3000
+
+### 1. Autenticação (Login - Sucesso)
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "admin@consultorio.com",
+    "senha": "senha123"
+}
+
+### 2. Autenticação (Login - Falha)
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "admin@consultorio.com",
+    "senha": "senha_incorreta"
+}
+
+### 3. Encerramento de Sessão (Logout)
+POST {{baseUrl}}/logout
+Content-Type: application/json
+
+### 4. Cadastrar Dentista
+POST {{baseUrl}}/dentistas
+Content-Type: application/json
+
+{
+    "nome": "Dr. Fernando Lima",
+    "cro": "CRO-SP 99999",
+    "especialidade": "Ortodontia"
+}
+
+### 5. Consultar Dentistas (Listar todos)
+GET {{baseUrl}}/dentistas
+
+### 6. Consultar Dentistas (Buscar por termo/nome)
+GET {{baseUrl}}/dentistas?termo=Roberto
+
+### 7. Cadastrar Cliente (Vínculo com Dentista e CPF Criptografado no backend)
+POST {{baseUrl}}/clientes
+Content-Type: application/json
+
+{
+    "nome": "Carlos Eduardo",
+    "cpf": "123.456.789-00",
+    "telefone": "(11) 99999-8888",
+    "dentista_id": 1
+}
+
+### 8. Consultar Clientes
+GET {{baseUrl}}/clientes
+
+### 9. Cadastrar Agendamento
+POST {{baseUrl}}/agendamentos
+Content-Type: application/json
+
+{
+    "data_hora": "2026-11-20T14:30:00",
+    "cliente_id": 1,
+    "dentista_id": 1
+}
+
+### 10. Consultar Agendamentos (Ordenados por data)
+GET {{baseUrl}}/agendamentos
